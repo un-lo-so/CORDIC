@@ -11,7 +11,7 @@ entity msf is
 		reset : out std_ulogic;							--asynchronous reset
 		nshift  : out std_ulogic_vector (3 downto 0);	--bus for driving LUT of CORDIC B module		
 		load_ext : out std_ulogic;	  					--signal for loading external data
-		sum_or_shift : out	std_ulogic;					--signla for driving CORDIC A
+		sum_or_shift : out	std_ulogic;					--signal for driving CORDIC A
 														--0 = add\subtract of operands
 														--1 = shift of operands		
 		output : out std_ulogic							--control signal for update the outputs of CORDIC
