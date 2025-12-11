@@ -46,7 +46,7 @@ architecture RTL of CORDIC_wrapper is
 	signal x_wrapped : std_ulogic_vector (13 downto 0);		 
 	signal y_wrapped : std_ulogic_vector (13 downto 0);		 
 	
-	--segno dell'ascissa
+	--sign of X
 	signal sgn_x : std_ulogic;
 	
 begin		   				

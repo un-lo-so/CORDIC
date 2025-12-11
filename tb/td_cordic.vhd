@@ -71,7 +71,8 @@ begin
 				x <= input_x;
 				y <= input_y;	
 			
-				wait for 2750ns;
+				wait for 2750ns;		--this is the time required to execute a single elaboration
+				                        --(!!!! only if clock is 20 MHz !!!!)				
 			end loop;	   		
 		
 			file_close(file_input);

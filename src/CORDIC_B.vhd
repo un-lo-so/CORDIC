@@ -16,7 +16,7 @@ entity CORDIC_B is
 		sum_or_store : in std_ulogic;							--configuration bit:
 																--1 holding data
 																--0 acquire new data
-		d : in std_ulogic;										--bit for sign - from CORDIC A,it drive the ripple carry adder\subractor
+		d : in std_ulogic;										--bit for sign - from CORDIC A,it drive the ripple carry adder\subtractor
 		fase : out std_ulogic_vector (15 downto 0);				--bus for the output
 		output : in std_ulogic									--pin for present the result in output
 	);	  
@@ -57,7 +57,7 @@ architecture struct of CORDIC_B is
 	);
 	end component reg;
 	
-	--auxiliary internal signals - see relation (page 4)
+	--auxiliary internal signals - see relation (page 6)
 	signal lut_out	: std_ulogic_vector(15 downto 0);	--output of LUT
 	signal sum_out	: std_ulogic_vector(15 downto 0); 	--output of ripple carry adder\subtractor
 	signal temp 	: std_ulogic_vector(15 downto 0);  	--temporary signal (first operand of ripple carry adder\subtractor) 

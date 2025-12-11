@@ -142,7 +142,7 @@ begin
 	end process path_state;  
 	
 	--process that drive the outputs
-	output_logic: process (curr_state,temp)		--any time that the current staate change 
+	output_logic: process (curr_state,temp)		--any time that the current state change 
 	begin
 		case curr_state is			 		--some output depend to current state
 			when PRS =>						--preset state

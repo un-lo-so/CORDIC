@@ -20,7 +20,7 @@ entity CORDIC_A is
 end CORDIC_A;
 
 architecture rtl of CORDIC_A is
-	--buliding blocks 
+	--building blocks 
 	--n bit ripple carry adder\subtractor
 	component add_sub_gen is
 	generic (NBit : positive := 4);						--default value of adder\subtractor is 4 bit
@@ -60,7 +60,7 @@ architecture rtl of CORDIC_A is
 	);
 	end component shift_reg;
 
-	--auxiliary internal signals - see relation (page 3)
+	--auxiliary internal signals - see report (page 6)
 	signal d : std_ulogic;
 	signal d1   : std_ulogic;
 	
