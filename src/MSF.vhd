@@ -8,8 +8,8 @@ entity msf is
 	port (
 		clk : in std_ulogic;							--clock
 		reset : out std_ulogic;							--asynchronous reset active high
-		nshift  : out std_ulogic_vector (3 downto 0);	--bus for driving shift registers
-														--bus for driving LUT of CORDIC B
+		nshift  : out std_ulogic_vector (3 downto 0);	--bus for driving shift registers and
+														--driving LUT of CORDIC B
 		load_ext : out std_ulogic;	  					--control signal to load new data 
 		output : out std_ulogic							--control signal to update outputs
 	);
