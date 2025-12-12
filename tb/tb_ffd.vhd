@@ -42,7 +42,8 @@ begin
 		clk <= not clk; 
 	end process;   
 	
-	proc2: process	 	----processo that drive data in
+	proc2: process	 	--processo that drive data in
+	begin
 		wait for 5 ns;
 		d <= '1';	
 		wait for 20 ns;
