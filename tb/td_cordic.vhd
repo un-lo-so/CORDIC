@@ -71,7 +71,7 @@ begin
 				--a signal acquire the outputs	 
 				x <= input_x;
 				y <= input_y;	
-				wait for 340ns;		--this is the time required to execute a single elaboration
+				wait for 340 ns;		--this is the time required to execute a single elaboration
 									--(!!!! only if clock is 20 MHz !!!!)
 			end loop;	   			  
 			file_close(file_input);		 		

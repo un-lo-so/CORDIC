@@ -53,7 +53,7 @@ begin
 	begin
 		wait for 630 ns;
 		output <='1'; 
-		wait for 20ns;
+		wait for 20 ns;
 		output <= '0';
 	end process;
 		

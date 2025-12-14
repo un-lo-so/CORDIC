@@ -45,15 +45,13 @@ begin
 	proc2 :	process
 	begin		
 		addr <= std_ulogic_vector(TO_UNSIGNED(14,4)); 
-		--wait for 76 ns;
-		--addr <= std_ulogic_vector(TO_UNSIGNED(1,4)); 
 		wait;	
 	end process;	
 	
 	proc3 : process
 	begin		
 		reset <= '1';
-		wait for 10ns;
+		wait for 10 ns;
 		reset <= '0'; 
 		wait for 100 ns;
 		reset <= '1';
