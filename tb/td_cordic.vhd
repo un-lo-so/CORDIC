@@ -49,7 +49,7 @@ begin
 	
 		begin	 
 			--read input file
-			file_open(file_input,"input.txt",read_mode);
+			file_open(file_input,"./tb/input.txt",read_mode);
 		
 			readline(file_input,linea);	
 			read(linea,input_x);
