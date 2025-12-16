@@ -12,7 +12,8 @@ entity CORDIC is
 		y	: in std_ulogic_vector (13 downto 0);		--Y  
 		sgn_x	: in std_ulogic;						--sign of X
 		modulo : out std_ulogic_vector (15 downto 0);	--output for modulus 
-		fase : out std_ulogic_vector (15 downto 0)	 	--output for phase
+		fase : out std_ulogic_vector (15 downto 0);	 	--output for phase
+		output : out std_ulogic							--notify new output
 	);
 end entity;		  
 
@@ -61,6 +62,15 @@ architecture rtl of CORDIC is
 	);	  
 	end component CORDIC_B;
 	
+	component ffd is 
+	port (	  
+		clk : in std_ulogic;		--clock, rising edge 
+		reset : in std_ulogic;		--reset, async, active high
+		d	: in std_ulogic;		--input
+		q	: out std_ulogic		--output
+	);
+	end component ffd;
+	
 	--internal control signals 
 	signal reset_int : std_ulogic; 						 
 	signal load_ext_int	: std_ulogic; 					 	 
@@ -72,4 +82,6 @@ begin
 	A : CORDIC_A port map (clk,x,y,reset_int,bus_int,load_ext_int,output_int,modulo,d_int);
 	controllore : msf port map (clk,reset_int,bus_int,load_ext_int,output_int); 	
 	B : CORDIC_B port map (sgn_x,clk,reset_int,bus_int,load_ext_int,d_int,fase,output_int);
+	
+	output_delay: ffd port map(clk,reset_int,output_int,output);
 end rtl;

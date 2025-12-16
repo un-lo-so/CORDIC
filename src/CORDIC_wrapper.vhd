@@ -10,7 +10,8 @@ entity CORDIC_wrapper is
 		x	: in std_ulogic_vector (13 downto 0);		--X
 		y	: in std_ulogic_vector (13 downto 0);		--Y    
 		modulo : out std_ulogic_vector (15 downto 0);	--output modulus
-		fase : out std_ulogic_vector (15 downto 0)	 	--phase		
+		fase : out std_ulogic_vector (15 downto 0);	 	--phase		
+		output : out std_ulogic
 	);
 end entity;
 
@@ -24,7 +25,8 @@ architecture RTL of CORDIC_wrapper is
 			y	: in std_ulogic_vector (13 downto 0);		--Y  
 			sgn_x	: in std_ulogic;						--sign of X
 			modulo : out std_ulogic_vector (15 downto 0);	--output for modulus 
-			fase : out std_ulogic_vector (15 downto 0)	 	--output for phase
+			fase : out std_ulogic_vector (15 downto 0);	 	--output for phase
+			output : out std_ulogic							--notify new output
 	);
 	end component CORDIC;	  
 	
@@ -47,7 +49,7 @@ architecture RTL of CORDIC_wrapper is
 	
 	--sign of X
 	signal sgn_x : std_ulogic;
-	
+		
 begin		   				
 	sgn_x <= x(13);	--the sign of X is acquired
 	--according to sign of X, X and Y are added or subtracted to 0 in order to refer the complex
@@ -55,5 +57,5 @@ begin
 	Sx_wrap : add_sub_gen generic map (14) port map ("00000000000000",x,x_wrapped,open,sgn_x);
 	Sy_wrap : add_sub_gen generic map (14) port map ("00000000000000",y,y_wrapped,open,sgn_x);
 		
-	C	: CORDIC port map (clk,x_wrapped,y_wrapped,sgn_x,modulo,fase);		
+	C	: CORDIC port map (clk,x_wrapped,y_wrapped,sgn_x,modulo,fase,output);
 end RTL;
