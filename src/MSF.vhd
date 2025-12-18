@@ -9,6 +9,7 @@ entity msf is
 	port (
 		clk : in std_ulogic;							--clock
 		reset : out std_ulogic;							--asynchronous reset
+		new_data : in std_ulogic;						--Notify the presence of new data in input
 		nshift  : out std_ulogic_vector (3 downto 0);	--bus for driving LUT of CORDIC B module		
 		load_ext : out std_ulogic;	  					--signal for loading external data
 		sum_or_shift : out	std_ulogic;					--signal for driving CORDIC A
@@ -79,7 +80,7 @@ begin
 	end process evol_state;
 	
 	--process for predict the next state
-	path_state: process (curr_state)	--when the current status change next state will be updated too	
+	path_state: process (curr_state,new_data)	--when the current status change next state will be updated too	
 	begin		 
 		--any status consist of a certain value for the state variable and a value for count register
 		case curr_state is
@@ -132,8 +133,12 @@ begin
 				count <= std_ulogic_vector(TO_UNSIGNED(15,4));	--right shift of 15 positions
 				next_state <= PRESENTA;							--in next state the new output will be presented
 			when LOAD =>										--load data 
-				count <= std_ulogic_vector(TO_UNSIGNED(0,4));	 --right shift of 0 positions
-				next_state <= SHIFT1;							 --in next state the operand must be right shift by 1
+				if new_data = '1' then
+					count <= std_ulogic_vector(TO_UNSIGNED(0,4));	 --right shift of 0 positions
+					next_state <= SHIFT1;							 --in next state the operand must be right shift by 1
+				else
+					next_state <= LOAD;
+				end if;
 			when others =>										 --for not covered states (only the output state)
 				count <= std_ulogic_vector(TO_UNSIGNED(0,4));	 --in next state a new cycle will be begin, the output
 																 --will be 0 and new data will be acquired
