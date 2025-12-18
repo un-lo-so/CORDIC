@@ -26,11 +26,13 @@ vlib .\uvvm_util\sim
 vlib .\uvvm_vvc_framework\sim
 vlib .\bitvis_vip_scoreboard\sim
 vlib .\bitvis_vip_clock_generator\sim
+vlib .\CORDIC_VVC\sim
 
 vmap uvvm_util .\uvvm_util\sim
 vmap uvvm_vvc_framework .\uvvm_vvc_framework\sim
 vmap uvvm_vip_scoreboard .\bitvis_vip_scoreboard\sim
 vmap uvvm_vip_clock_generator .\bitvis_vip_clock_generator\sim
+vmap cordic_vvc .\CORDIC_VVC\sim
 
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\types_pkg.vhd
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\adaptations_pkg.vhd
@@ -52,9 +54,6 @@ vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\dummy_func_c
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\association_list_pkg.vhd
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\func_cov_pkg.vhd
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\uvvm_util_context.vhd
-
-
-
 
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_util .\uvvm_util\src\uvvm_util_context.vhd
 
@@ -78,3 +77,5 @@ vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_clock_generator\..\uvvm_vvc_framework\src_target_dependent\td_vvc_entity_support_pkg.vhd
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_clock_generator\src\clock_generator_vvc.vhd
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_clock_generator\src\vvc_context.vhd
+
+vcom -2008 -work cordic_vvc .\CORDIC_VVC\src\cordic_bfm_pkg.vhd
