@@ -13,3 +13,5 @@ Vivado (of both designs) and a numerical analysis for algorithm.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+![waveform of testbench signals](./img/screenshot.png)
