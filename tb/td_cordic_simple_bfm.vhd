@@ -50,7 +50,7 @@ begin
 			clock_margin_severity 	=> TB_ERROR,
 			setup_time				=> C_UNDEFINED_TIME,
 			hold_time				=> C_UNDEFINED_TIME,
-			wait_num_cycle			=> 30,
+			wait_num_cycle			=> 2000,
 			wait_cycles_severity	=> WARNING
 		);
 		
@@ -108,7 +108,7 @@ begin
 			end if;
 			
 			--write data to bus
-			write_cartesian(x,y,msg,clk,cordic_if);
+			write_cartesian(x,y,msg,clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
 		
 			--check values returned by CORDIC
 			read_cartesian(calculated_modulus,calculated_phase,msg,clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
@@ -175,7 +175,7 @@ begin
 				rand_sym_x := rnd_sym.rand(-64.0,63.99);
 				rand_sym_y := rnd_sym.rand(-64.0,63.99);
 			
-				write_cartesian(rand_sym_x,rand_sym_y,"Check tollerance",clk,cordic_if);
+				write_cartesian(rand_sym_x,rand_sym_y,"Check tollerance",clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
 				read_cartesian(real_modulus,real_phase,"Check tollerance",clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
 			
 				expected_modulus := sqrt(rand_sym_x**2+rand_sym_y**2);
@@ -219,7 +219,7 @@ begin
 				rand_sym_x := rnd_sym.rand(-64.0,63.99);
 				rand_sym_y := rnd_sym.rand(-64.0,63.99);
 			
-				write_cartesian(rand_sym_x,rand_sym_y,"Check tollerance",clk,cordic_if);
+				write_cartesian(rand_sym_x,rand_sym_y,"Check tollerance",clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
 				read_cartesian(real_modulus,real_phase,"Check tollerance",clk,cordic_if,C_SCOPE,shared_msg_id_panel,CONFIG_IF);
 			
 				if rand_sym_y >= real(0) then
