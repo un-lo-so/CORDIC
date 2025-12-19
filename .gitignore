@@ -1,3 +1,4 @@
 modelsim.ini
 transcript
 vsim.wlf
+vsim_stacktrace.vstf
