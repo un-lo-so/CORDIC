@@ -80,3 +80,5 @@ vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_
 vcom -suppress 1346,1236,1090 -2008 -work uvvm_vip_clock_generator .\bitvis_vip_clock_generator\src\vvc_context.vhd
 
 vcom -2008 -work cordic_vvc .\CORDIC_VVC\src\cordic_bfm_pkg.vhd
+
+vcom -2008 -work CORDIC .\tb\td_cordic_simple_bfm.vhd
